@@ -11,7 +11,7 @@ import BeforeLoginRoutes from './Pages/ProtectedRoutes/BeforeLoginRoutes';
 import CaseDetailPage from './Pages/SingleCase/CaseDetailPage';
 import EditProfile from './Pages/Profile/Editprofile';
 import Footer from './Pages/Universal/Footer';
-import ChatBot from './Pages/component/Chatbot';
+
 
 
 export default function App() {
@@ -25,7 +25,7 @@ export default function App() {
         <Route exact path="/casedetails/:id" element={<AfterLoginRoutes> <CaseDetailPage/> </AfterLoginRoutes> }/>
         <Route exact path="/signin" element={<BeforeLoginRoutes> <SignIn/> </BeforeLoginRoutes>}/>
         <Route exact path="/signup" element={<BeforeLoginRoutes><SignUp/></BeforeLoginRoutes> }/>
-        <Route exact path="/chatbot" element={<ChatBot/> }/>
+        
         <Route path="*" element={<Error404Page/>}/>
       </Routes>
       {/* <Footer/> */}

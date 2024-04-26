@@ -3,6 +3,17 @@ import { useCaseContext } from '../Context/CaseContext';
 import CreateNewCaseModal from './CreateNewCaseModal';
 import { Link } from 'react-router-dom';
 
+const Tooltip = ({ children, title }) => {
+  return (
+    <div className="relative">
+      {children}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white py-2 px-4 rounded-md z-50">
+        {title}
+      </div>
+    </div>
+  );
+};
+
 const Home = () => {
   const { cases, deleteCase, createCase } = useCaseContext();
   const [showModal, setShowModal] = useState(false);
@@ -53,7 +64,20 @@ const Home = () => {
       {showModal && (<CreateNewCaseModal newCaseData={newCaseData} setNewCaseData={setNewCaseData} handleCreateCase={handleCreateCase} setShowModal={setShowModal} />)}
 
       {/* Styling and positioning the button */}
-      <button className='p-2 m-2 border-2 border-red-900 absolute bottom-0 right-0'>Your Personal Advisor</button>
+      <div className="fixed bottom-4 right-4 z-50">
+      <Tooltip title="Your personal law assistant">
+        <a
+          href="https://lawyer-chatbot.onrender.com/"
+          // target="_blank"
+          rel="noopener noreferrer"
+          className="block bg-blue-500 p-2 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
+        >
+          <span role="img" aria-label="Bot" className="text-white text-lg">
+            🤖
+          </span>
+        </a>
+      </Tooltip>
+    </div>
     </div>
   );
 };
